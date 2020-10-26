@@ -1,0 +1,11 @@
+
+[en]
+  title = "Kammin"
+  LanguageName = "English"
+  weight = 1
+
+[es]
+  title = "Kammin"
+  LanguageName = "Español"
+  weight = 2
+  

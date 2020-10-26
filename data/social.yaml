@@ -1,0 +1,9 @@
+- item: "github"
+  url: "https://github.com/Sergiotm87"
+- item: "twitter"
+  url: "https://twitter.com/sergiotm_87"
+- item: "linkedin"
+  url: "https://www.linkedin.com/in/sergio-teran-monge-250941130/"
+- item: "rss"
+  url: "index.xml"
+  internal:  true
