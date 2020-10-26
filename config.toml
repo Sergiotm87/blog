@@ -1,7 +1,6 @@
-baseURL = "http://sergiotm87.github.io/blog/"
+baseURL = "https://sergiotm87.github.io/blog/"
 title = "Kammin"
 author = "Sergio Teran Monge"
-copyright = "Copyright © 2008–2018, ddddddddddddddddddddddSergio Teran Monge; all rights reserved."
 # canonifyurls = true
 paginate = 10
 theme = ["clarity"]
