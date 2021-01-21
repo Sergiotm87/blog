@@ -10,7 +10,7 @@ tags: [
 ]
 ---
 
-This is a simple setup to test the recently released workflow engine [Temporal](https://docs.temporal.io/docs/overview/) (from Uber's Cadence creators) with [Openfaas](https://docs.openfaas.com/) serverless framework in a local k3d kubernetes cluster.
+**Simple setup to test the recently released workflow engine [Temporal](https://docs.temporal.io/docs/overview/) (from Uber's Cadence creators) with [Openfaas](https://docs.openfaas.com/) serverless framework in a local k3d kubernetes cluster.**
 
 <!--more-->
 
