@@ -3,7 +3,7 @@ title: "Drupal deployments in AWS ECS with AWS Copilot" # Title of the blog post
 date: 2021-01-22T19:36:11+01:00 # Date of post creation.
 description: "Drupal deployment in AWS ECS using copilot cli." # Description used for search engine.
 featured: true # Sets if post is a featured post, making appear on the home page side bar.
-draft: true # Sets whether to render this page. Draft of true will not be rendered.
+draft: false # Sets whether to render this page. Draft of true will not be rendered.
 #toc: true # Controls if a table of contents should be generated for first-level links automatically.
 #menu: main
 # featureImage: "images/aws-ecs.png" # Sets featured image on blog post.
