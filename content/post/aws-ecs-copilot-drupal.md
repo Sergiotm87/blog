@@ -110,11 +110,13 @@ copilot svc init --name drupal --svc-type "Backend Service" \
 
 The build options can be [extended](https://aws.github.io/copilot-cli/docs/manifest/backend-service/#image-build) to use build context, build args or a target in a multibuild stage to name a few.
 
-Copilot comes with some addinitial AWS resources creation in the cli (more to come yet). A s3 bucket is created attached to drupal to save Drupal static files.
+Copilot comes with some additional AWS resources creation in the cli (more to come yet). A s3 bucket attached to drupal is created with this command to save Drupal static files:
 
 ```shell
 copilot storage init --name static-files --storage-type S3 --workload drupal
 ```
+
+In the created file under copilot/drupal/addons/static-files.yaml I will manually edit the managed policy to grant acces to the backend service to another s3 bucket to sync files from.
 
 To create additional AWS resources [check this guide](https://aws.github.io/copilot-cli/docs/developing/additional-aws-resources/). The custom cloudformation template needs a IAM ManagedPolicy with the generated ARN in the Outputs to inject the value to the attached service.
 
@@ -122,22 +124,7 @@ There is also a sample RDS CloudFormation template in the repository with fixed 
 
 ![](/images/aws-copilot-svc-init-drupal.gif)
 
-
-## 3.2 Create nginx service
-
-The nginx webserver will be accessible from internet using an Application Load Balancer.
-
-```shell
-copilot svc init --name nginx --svc-type "Load Balanced Web Service" \
-                 --port 80 --dockerfile ./docker-images/nginx/Dockerfile
-```
-
-This service will also need access to the static files in the S3 bucket. I will attach the created task role in the drupal service with access to S3 to the nginx service using a cloud formation file in the addons directory.
-
-![](/images/aws-copilot-svc-init-nginx.gif)
-
-
-## Deploy drupal service
+After customizing our resources deploy the backend service, the s3 bucket and the RDS database with this command:
 
 ```shell
 $ copilot svc deploy --name drupal --env dev
@@ -244,11 +231,24 @@ bc11fe48042d: Pushed
 777b2c648970: Pushed 
 9c587264: digest: sha256:5f4a4b9ff3cac43f40be614206f8d55e6fa563965ced94b02449eff143b3f94b size: 5752
 
-
 ✔ Deployed drupal, its service discovery endpoint is drupal.drupal.local:9000.
 ```
 
-## Deploy nginx service
+
+## 3.2 Create nginx service
+
+The nginx webserver will be accessible from internet using an Application Load Balancer.
+
+```shell
+copilot svc init --name nginx --svc-type "Load Balanced Web Service" \
+                 --port 80 --dockerfile ./docker-images/nginx/Dockerfile
+```
+
+This service will also need access to the static files in the S3 bucket. I will attach the created task role in the drupal service with access to S3 to the nginx service using a cloud formation file in the addons directory.
+
+![](/images/aws-copilot-svc-init-nginx.gif)
+
+Deploy the webserver by running:
 
 ```shell
 $ copilot svc deploy --name nginx --env dev
@@ -295,7 +295,7 @@ The push refers to repository [164569299119.dkr.ecr.eu-west-1.amazonaws.com/drup
 ✔ Deployed nginx, you can access it at http://drupa-Publi-7ALB3R0XXATM-1534998363.eu-west-1.elb.amazonaws.com.
 ```
 
-# Sync static files to s3 and database to AWS RDS
+# 3.3 Sync static files to s3 and database to AWS RDS
 
 To run the migration script I will parse the info provided by 'copilot svc show'
 
@@ -408,3 +408,13 @@ $ copilot app delete --yes --name drupal
 ✔ Deleted application configuration.
 ✔ Deleted local .workspace file.
 ```
+
+## References:
+
+https://aws.github.io/copilot-cli/
+https://maartenbruntink.nl/blog/2020/08/16/deploying-containers-with-the-aws-copilot-cli-part-1/
+https://github.com/drupalwxt
+https://nathanpeck.com/speeding-up-amazon-ecs-container-deployments/
+https://youtu.be/WOhm_YgrGwY
+
+
