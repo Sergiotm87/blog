@@ -41,7 +41,7 @@ What did I miss from copilot?
 * Cross accounts functionalities: being able to promote artifacts from develop to production accounts and follow good AWS practices.
 * Works in conjunction with another tools like [AWS CDK](https://aws.amazon.com/cdk/) or [Hashicorp terraform.](https://www.terraform.io/)
 
-The full [sample code is in github](https://github.com/Sergiotm87/aws-copilot-drupal) (v1.1.0 branch)
+The full [sample code is in github](https://github.com/Sergiotm87/aws-copilot-drupal/tree/v1.1.0) (v1.1.0 branch)
 
 
 #### Motivation
@@ -292,7 +292,7 @@ The push refers to repository [164569299119.dkr.ecr.eu-west-1.amazonaws.com/drup
 9c587264: digest: sha256:8b20830a31c3943e130762bf92c388556c1e6ca1681867da2344372b44e538a3 size: 1993
 
 
-✔ Deployed nginx, you can access it at http://drupa-Publi-7ALB3R0XXATM-1534998363.eu-west-1.elb.amazonaws.com.
+✔ Deployed nginx, you can access it at http://drupa-publi-kxncfk7jyr9z-339478161.eu-west-1.elb.amazonaws.com/.
 ```
 
 # 3.3 Sync static files to s3 and database to AWS RDS
@@ -390,7 +390,9 @@ Task has stopped.
 
 ## Check website
 
-[WIP]
+After the sync job the site is up.
+
+![](/images/aws_copilot_umami_screenshot.png)
 
 ## Delete app
 
@@ -411,10 +413,10 @@ $ copilot app delete --yes --name drupal
 
 ## References:
 
-https://aws.github.io/copilot-cli/
-https://maartenbruntink.nl/blog/2020/08/16/deploying-containers-with-the-aws-copilot-cli-part-1/
-https://github.com/drupalwxt
-https://nathanpeck.com/speeding-up-amazon-ecs-container-deployments/
+https://aws.github.io/copilot-cli/\
+https://maartenbruntink.nl/blog/2020/08/16/deploying-containers-with-the-aws-copilot-cli-part-1/\
+https://github.com/drupalwxt\
+https://nathanpeck.com/speeding-up-amazon-ecs-container-deployments/\
 https://youtu.be/WOhm_YgrGwY
 
 
