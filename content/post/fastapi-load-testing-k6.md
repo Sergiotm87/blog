@@ -64,7 +64,7 @@ services:
     image: openapitools/openapi-generator-cli
     volumes:
       - ${PWD}:/ci
-    command: generate -i -i http://fastapi/openapi.json -g k6 -o /ci/k6/ --skip-validate-spec
+    command: generate -i http://fastapi/openapi.json -g k6 -o /ci/k6/ --skip-validate-spec
   
   k6:
     image: loadimpact/k6
@@ -188,3 +188,6 @@ docker-compose run --rm k6
 ![k6s-fastapi-run](/images/k6s-fastapi-run.png)
 
 
+```shell
+docker-compose down
+```
